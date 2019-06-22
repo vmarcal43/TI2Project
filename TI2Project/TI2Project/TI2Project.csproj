@@ -180,7 +180,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Atores.cs" />
+    <Compile Include="Models\AtoresFilmes.cs" />
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Comentarios.cs" />
+    <Compile Include="Models\Estudios.cs" />
+    <Compile Include="Models\Filmes.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
