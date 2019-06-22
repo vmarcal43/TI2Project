@@ -184,6 +184,7 @@
     <Compile Include="Models\AtoresFilmes.cs" />
     <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Class2.cs" />
+    <Compile Include="Models\Class3.cs" />
     <Compile Include="Models\Comentarios.cs" />
     <Compile Include="Models\Estudios.cs" />
     <Compile Include="Models\Filmes.cs" />
