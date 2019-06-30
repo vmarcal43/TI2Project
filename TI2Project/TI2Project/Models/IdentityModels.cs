@@ -35,5 +35,9 @@ namespace TI2Project.Models
         public System.Data.Entity.DbSet<TI2Project.Models.Estudios> Estudios { get; set; }
 
         public System.Data.Entity.DbSet<TI2Project.Models.Atores> Atores { get; set; }
+
+        public System.Data.Entity.DbSet<TI2Project.Models.Comentarios> Comentarios { get; set; }
+
+        public System.Data.Entity.DbSet<TI2Project.Models.AtoresFilmes> AtoresFilmes { get; set; }
     }
 }

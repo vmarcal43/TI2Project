@@ -175,6 +175,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AtoresController.cs" />
+    <Compile Include="Controllers\AtoresFilmesController.cs" />
+    <Compile Include="Controllers\ComentariosController.cs" />
+    <Compile Include="Controllers\EstudiosController.cs" />
     <Compile Include="Controllers\FilmesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -259,6 +262,21 @@
     <Content Include="Views\Atores\Details.cshtml" />
     <Content Include="Views\Atores\Edit.cshtml" />
     <Content Include="Views\Atores\Index.cshtml" />
+    <Content Include="Views\Estudios\Create.cshtml" />
+    <Content Include="Views\Estudios\Delete.cshtml" />
+    <Content Include="Views\Estudios\Details.cshtml" />
+    <Content Include="Views\Estudios\Edit.cshtml" />
+    <Content Include="Views\Estudios\Index.cshtml" />
+    <Content Include="Views\Comentarios\Create.cshtml" />
+    <Content Include="Views\Comentarios\Delete.cshtml" />
+    <Content Include="Views\Comentarios\Details.cshtml" />
+    <Content Include="Views\Comentarios\Edit.cshtml" />
+    <Content Include="Views\Comentarios\Index.cshtml" />
+    <Content Include="Views\AtoresFilmes\Create.cshtml" />
+    <Content Include="Views\AtoresFilmes\Delete.cshtml" />
+    <Content Include="Views\AtoresFilmes\Details.cshtml" />
+    <Content Include="Views\AtoresFilmes\Edit.cshtml" />
+    <Content Include="Views\AtoresFilmes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
