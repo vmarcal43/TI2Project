@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace TI2Project.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comentarios
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var comentarios = db.Comentarios.Include(c => c.Filme);
-            return View(await comentarios.ToListAsync());
+            return View(comentarios.ToList());
         }
 
         // GET: Comentarios/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comentarios comentarios = await db.Comentarios.FindAsync(id);
+            Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
                 return HttpNotFound();
@@ -49,12 +48,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
+        public ActionResult Create([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
         {
             if (ModelState.IsValid)
             {
                 db.Comentarios.Add(comentarios);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,13 +62,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Comentarios/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comentarios comentarios = await db.Comentarios.FindAsync(id);
+            Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
                 return HttpNotFound();
@@ -83,12 +82,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
+        public ActionResult Edit([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(comentarios).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.FilmeFK = new SelectList(db.Filmes, "ID", "Titulo", comentarios.FilmeFK);
@@ -96,13 +95,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Comentarios/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comentarios comentarios = await db.Comentarios.FindAsync(id);
+            Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
                 return HttpNotFound();
@@ -113,11 +112,11 @@ namespace TI2Project.Controllers
         // POST: Comentarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Comentarios comentarios = await db.Comentarios.FindAsync(id);
+            Comentarios comentarios = db.Comentarios.Find(id);
             db.Comentarios.Remove(comentarios);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

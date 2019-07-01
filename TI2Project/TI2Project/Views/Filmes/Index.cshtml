@@ -1,69 +1,16 @@
 ﻿@model IEnumerable<TI2Project.Models.Filmes>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+<h2>Films</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Film", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Estudio.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Trailer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lancamento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duracao)
-        </th>
-        <th></th>
-    </tr>
-
+@{string title;} //eliminar
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estudio.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Trailer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lancamento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duracao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+    title = Html.DisplayFor(modelItem => item.Titulo).ToString() + ".jpg"; //eliminar
+<div class="img" style="float: left; border-style:solid; border-color:black">
+    <img src="~/Imagens/Filmes/@title" width="182" height="268"> //mudar title
+    <p style="text-align:center">@Html.DisplayFor(modelItem => item.Titulo)</p>
+    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+</div>
 }
-
-</table>

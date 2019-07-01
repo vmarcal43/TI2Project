@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace TI2Project.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Estudios
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Estudios.ToListAsync());
+            return View(db.Estudios.ToList());
         }
 
         // GET: Estudios/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudios estudios = await db.Estudios.FindAsync(id);
+            Estudios estudios = db.Estudios.Find(id);
             if (estudios == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Nome,Imagem")] Estudios estudios)
+        public ActionResult Create([Bind(Include = "ID,Nome,Imagem")] Estudios estudios)
         {
             if (ModelState.IsValid)
             {
                 db.Estudios.Add(estudios);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Estudios/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudios estudios = await db.Estudios.FindAsync(id);
+            Estudios estudios = db.Estudios.Find(id);
             if (estudios == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Nome,Imagem")] Estudios estudios)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Imagem")] Estudios estudios)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(estudios).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(estudios);
         }
 
         // GET: Estudios/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Estudios estudios = await db.Estudios.FindAsync(id);
+            Estudios estudios = db.Estudios.Find(id);
             if (estudios == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace TI2Project.Controllers
         // POST: Estudios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Estudios estudios = await db.Estudios.FindAsync(id);
+            Estudios estudios = db.Estudios.Find(id);
             db.Estudios.Remove(estudios);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

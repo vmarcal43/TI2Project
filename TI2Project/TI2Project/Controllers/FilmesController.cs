@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,20 +15,20 @@ namespace TI2Project.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Filmes
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var filmes = db.Filmes.Include(f => f.Estudio);
-            return View(await filmes.ToListAsync());
+            return View(filmes.ToList());
         }
 
         // GET: Filmes/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Filmes filmes = await db.Filmes.FindAsync(id);
+            Filmes filmes = db.Filmes.Find(id);
             if (filmes == null)
             {
                 return HttpNotFound();
@@ -49,12 +48,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Titulo,Imagem,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filmes)
+        public ActionResult Create([Bind(Include = "ID,Titulo,Imagem,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filmes)
         {
             if (ModelState.IsValid)
             {
                 db.Filmes.Add(filmes);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,13 +62,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Filmes/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Filmes filmes = await db.Filmes.FindAsync(id);
+            Filmes filmes = db.Filmes.Find(id);
             if (filmes == null)
             {
                 return HttpNotFound();
@@ -83,12 +82,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Titulo,Imagem,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filmes)
+        public ActionResult Edit([Bind(Include = "ID,Titulo,Imagem,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filmes)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(filmes).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.EstudioFK = new SelectList(db.Estudios, "ID", "Nome", filmes.EstudioFK);
@@ -96,13 +95,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Filmes/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Filmes filmes = await db.Filmes.FindAsync(id);
+            Filmes filmes = db.Filmes.Find(id);
             if (filmes == null)
             {
                 return HttpNotFound();
@@ -113,11 +112,11 @@ namespace TI2Project.Controllers
         // POST: Filmes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Filmes filmes = await db.Filmes.FindAsync(id);
+            Filmes filmes = db.Filmes.Find(id);
             db.Filmes.Remove(filmes);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

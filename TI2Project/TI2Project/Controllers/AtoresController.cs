@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -16,19 +15,19 @@ namespace TI2Project.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Atores
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Atores.ToListAsync());
+            return View(db.Atores.ToList());
         }
 
         // GET: Atores/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Atores atores = await db.Atores.FindAsync(id);
+            Atores atores = db.Atores.Find(id);
             if (atores == null)
             {
                 return HttpNotFound();
@@ -47,12 +46,12 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Nome,Nascimento,Nacionalidade,Foto")] Atores atores)
+        public ActionResult Create([Bind(Include = "ID,Nome,Nascimento,Nacionalidade,Foto")] Atores atores)
         {
             if (ModelState.IsValid)
             {
                 db.Atores.Add(atores);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -60,13 +59,13 @@ namespace TI2Project.Controllers
         }
 
         // GET: Atores/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Atores atores = await db.Atores.FindAsync(id);
+            Atores atores = db.Atores.Find(id);
             if (atores == null)
             {
                 return HttpNotFound();
@@ -79,25 +78,25 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Nome,Nascimento,Nacionalidade,Foto")] Atores atores)
+        public ActionResult Edit([Bind(Include = "ID,Nome,Nascimento,Nacionalidade,Foto")] Atores atores)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(atores).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(atores);
         }
 
         // GET: Atores/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Atores atores = await db.Atores.FindAsync(id);
+            Atores atores = db.Atores.Find(id);
             if (atores == null)
             {
                 return HttpNotFound();
@@ -108,11 +107,11 @@ namespace TI2Project.Controllers
         // POST: Atores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Atores atores = await db.Atores.FindAsync(id);
+            Atores atores = db.Atores.Find(id);
             db.Atores.Remove(atores);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
