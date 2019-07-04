@@ -12,7 +12,7 @@ namespace TI2Project.Models{
 
         public string Conteudo { get; set; }
 
-        public DateTime Data { get; set; }
+        public DateTime? Data { get; set; }
 
         [ForeignKey("Filme")]
         public int FilmeFK { get; set; }

@@ -6,6 +6,12 @@ using System.Web;
 namespace TI2Project.Models{
 
     public class Estudios{
+        public Estudios()
+        {
+
+            ListaDeFilmes= new HashSet<Filmes>();
+            
+        }
 
         public int ID { get; set; }
 

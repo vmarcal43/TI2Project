@@ -8,6 +8,13 @@ namespace TI2Project.Models{
 
     public class Filmes{
 
+        public Filmes()
+        {
+
+            ListaDePersonagens = new HashSet<AtoresFilmes>();
+            
+        }
+
         public int ID { get; set; }
 
         public string Titulo { get; set; }
