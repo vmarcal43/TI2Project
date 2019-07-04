@@ -30,7 +30,7 @@ namespace TI2Project.Migrations
             var filmes = new List<Filmes>
             {
                 new Filmes {Titulo="Avengers 1", Duracao=2, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="aaaaa",Genero="Action", EstudioFK=1},
-                new Filmes {Titulo="Avengers 2", Duracao=2, Lancamento=2017,Imagem="Aveengers2.jpg", Trailer="aaaa",Genero="Action", EstudioFK=1, },
+                new Filmes {Titulo="Avengers 2", Duracao=2, Lancamento=2017,Imagem="Avengers2.jpg", Trailer="aaaa",Genero="Action", EstudioFK=1, },
 
 
             };

@@ -11,7 +11,7 @@
     title = Html.DisplayFor(modelItem => item.Titulo).ToString() + ".jpg";<!--eliminar-->
 <div class="img" style="float:left; border-style:solid; border-color:black">
     <a href="/Filmes/Details/@item.ID">
-        <img src="~/Imagens/Filmes/@title" width="182" height="268"> <!--mudar title-->
+        <img src="~/Images/@item.Imagem" width="182" height="268"> <!--mudar title-->
         </a>
         <p style="text-align:center">@Html.DisplayFor(modelItem => item.Titulo)</p>
 </div>
