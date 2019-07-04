@@ -206,7 +206,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\Filmes\12 Strong.jpg" />
-    <Content Include="Imagens\Filmes\2h22.jpg" />
     <Content Include="Imagens\Filmes\7 Pecados Rurais.jpg" />
     <Content Include="Imagens\Profile Photos\DSCF3287.JPG" />
     <Content Include="Scripts\bootstrap.js" />

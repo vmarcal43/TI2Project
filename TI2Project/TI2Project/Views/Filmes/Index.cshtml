@@ -5,12 +5,14 @@
 <p>
     @Html.ActionLink("Create New Film", "Create")
 </p>
-@{string title;} //eliminar
-@foreach (var item in Model) {
-    title = Html.DisplayFor(modelItem => item.Titulo).ToString() + ".jpg"; //eliminar
-<div class="img" style="float: left; border-style:solid; border-color:black">
-    <img src="~/Imagens/Filmes/@title" width="182" height="268"> //mudar title
-    <p style="text-align:center">@Html.DisplayFor(modelItem => item.Titulo)</p>
-    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+@{string title;} <!--eliminar-->
+@foreach (var item in Model)
+{
+    title = Html.DisplayFor(modelItem => item.Titulo).ToString() + ".jpg";<!--eliminar-->
+<div class="img" style="float:left; border-style:solid; border-color:black">
+    <a href="/Filmes/Details/@item.ID">
+        <img src="~/Imagens/Filmes/@title" width="182" height="268"> <!--mudar title-->
+        </a>
+        <p style="text-align:center">@Html.DisplayFor(modelItem => item.Titulo)</p>
 </div>
 }
