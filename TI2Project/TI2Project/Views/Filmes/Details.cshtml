@@ -2,26 +2,29 @@
 
 <h2>@Html.DisplayFor(model => model.Titulo)</h2>
 
-<div>
-    <hr />
-        @*<p>
-            @Html.DisplayFor(model => model.Estudio.Nome)
-        </p>*@
-            @{string title = Html.DisplayFor(model => model.Titulo).ToString() + ".jpg";}
-            <img src="~/Imagens/Filmes/@title" width="275" height="375">
-        @*<p>
-            @Html.DisplayFor(model => model.Trailer)
-        </p>
+    <img src="~/Images/@Html.DisplayFor(model => model.Imagem)" width="282" height="368">
+    <div style="position: relative; left: 300px; top: -368px">
+        @*<p>@Html.DisplayFor(model => model.Trailer)</p>*@
+        <p>Duration: @Html.DisplayFor(model => model.Duracao) mins</p>
+        <p>Genre: @Html.DisplayFor(model => model.Genero)</p>
+        <p>Year: @Html.DisplayFor(model => model.Lancamento)</p>
         <p>
-            @Html.DisplayFor(model => model.Lancamento)
+            Studio:
+            <img src="~/Images/@Html.DisplayFor(model => model.Estudio.Imagem)" width="10" height="10">
+            @Html.DisplayFor(model => Model.Estudio.Nome)
         </p>
-        <p>
-            @Html.DisplayFor(model => model.Genero)
-        </p>
-        <p>
-            @Html.DisplayFor(model => model.Duracao)
-        </p>*@
-</div>
+        <br />
+        <p>Personagens:</p>
+        @foreach (var item in Model.ListaDePersonagens)
+        {
+            <p>
+            <a href="/Episodios/Details/@item.Ator">
+                <img src="~/Images/@Html.DisplayFor(model => item.Ator.Foto)" width="66" height="100">
+            </a>
+            @Html.DisplayFor(model => item.Ator.Nome)
+            </p>
+        }
+    </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
