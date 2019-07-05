@@ -2,15 +2,14 @@
 
 <h2>Films</h2>
 
-<p>
-    @Html.ActionLink("Create New Film", "Create")
-</p>
+<p>@Html.ActionLink("Add New Film", "Create")</p>
+
 @foreach (var item in Model)
 {
-<div class="img" style="float:left; border-style:solid; border-color:black">
+<div style="float:left; border-style:solid; border-color:black">
     <a href="/Filmes/Details/@item.ID">
-        <img src="~/Images/@item.Imagem" width="182" height="268">
+        <img src="~/Images/Films/@item.Imagem" width="182" height="268">
         </a>
-        <p style="text-align:center">@Html.DisplayFor(modelItem => item.Titulo)</p>
+        <p style="text-align:center">@item.Titulo</p>
 </div>
 }

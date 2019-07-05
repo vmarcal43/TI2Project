@@ -20,7 +20,7 @@ namespace TI2Project.Migrations
 
             var estudios = new List<Estudios>
             {
-                new Estudios {Nome="Marvel", Imagem="marvel.png"},
+                new Estudios {Nome="Marvel Studios", Imagem="marvel.png"},
 
             };
             estudios.ForEach(dd => context.Estudios.AddOrUpdate(d => d.Nome, dd));
@@ -29,8 +29,8 @@ namespace TI2Project.Migrations
 
             var filmes = new List<Filmes>
             {
-                new Filmes {Titulo="Avengers 1", Duracao=2, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="aaaaa",Genero="Action", EstudioFK=1},
-                new Filmes {Titulo="Avengers 2", Duracao=2, Lancamento=2017,Imagem="Avengers2.jpg", Trailer="aaaa",Genero="Action", EstudioFK=1, },
+                new Filmes {Titulo="Avengers: Age of Ultron", Duracao=2, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="aaaaa",Genero="Action", EstudioFK=1},
+                new Filmes {Titulo="Avengers: Endgame", Duracao=2, Lancamento=2017,Imagem="Avengers2.jpg", Trailer="aaaa",Genero="Action", EstudioFK=1, },
 
 
             };
@@ -42,7 +42,7 @@ namespace TI2Project.Migrations
             {
                 new Atores {Nome="Chris Evans", Nacionalidade="Millie Brown", Foto="ChrisEvans.jfif"  },
                 new Atores {Nome="Chris Hemsworth", Nacionalidade="Wolfhard",  Foto="ChrisHemsworth.jfif" },
-                new Atores {Nome="Rober Downey Jr.", Nacionalidade="Three",  Foto="RoberDowneyJR.jfif" }
+                new Atores {Nome="Robert Downey Jr.", Nacionalidade="Three",  Foto="RobertDowneyJR.jfif" }
 
 
             };
