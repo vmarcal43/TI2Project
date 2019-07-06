@@ -32,9 +32,11 @@ namespace TI2Project.Models{
 
         [ForeignKey("Estudio")]
         public int EstudioFK { get; set; }
-        public Estudios Estudio { get; set; }
+        public virtual Estudios Estudio { get; set; }
 
 
         public virtual ICollection<AtoresFilmes> ListaDePersonagens { get; set; }
+
+        public virtual ICollection<Comentarios> ListaDeComentarios { get; set; }
     }
 }

@@ -29,8 +29,8 @@ namespace TI2Project.Migrations
 
             var filmes = new List<Filmes>
             {
-                new Filmes {Titulo="Avengers: Age of Ultron", Duracao=2, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="aaaaa",Genero="Action", EstudioFK=1},
-                new Filmes {Titulo="Avengers: Endgame", Duracao=2, Lancamento=2017,Imagem="Avengers2.jpg", Trailer="aaaa",Genero="Action", EstudioFK=1, },
+                new Filmes {Titulo="Avengers: Age of Ultron", Duracao=141, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="tmeOjFno6Do",Genero="Action", EstudioFK=1},
+                new Filmes {Titulo="Avengers: Endgame", Duracao=181, Lancamento=2019,Imagem="Avengers2.jpg", Trailer="hA6hldpSTF8",Genero="Action", EstudioFK=1, },
 
 
             };
@@ -40,9 +40,9 @@ namespace TI2Project.Migrations
 
             var atores = new List<Atores>
             {
-                new Atores {Nome="Chris Evans", Nacionalidade="Millie Brown", Foto="ChrisEvans.jfif"  },
-                new Atores {Nome="Chris Hemsworth", Nacionalidade="Wolfhard",  Foto="ChrisHemsworth.jfif" },
-                new Atores {Nome="Robert Downey Jr.", Nacionalidade="Three",  Foto="RobertDowneyJR.jfif" }
+                new Atores {Nome="Chris Evans", Nacionalidade="American", Foto="ChrisEvans.jfif"  },
+                new Atores {Nome="Chris Hemsworth", Nacionalidade="Australian",  Foto="ChrisHemsworth.jfif" },
+                new Atores {Nome="Robert Downey Jr.", Nacionalidade="American",  Foto="RobertDowneyJR.jfif" }
 
 
             };
@@ -53,10 +53,10 @@ namespace TI2Project.Migrations
 
             var atoresFilmes = new List<AtoresFilmes>
             {
-                new AtoresFilmes {NomePersonagem="Captan America", AtorFK=1, FilmeFK=1},              
+                new AtoresFilmes {NomePersonagem="Captain America", AtorFK=1, FilmeFK=1},              
                 new AtoresFilmes {NomePersonagem="Thor", AtorFK=2, FilmeFK=1},              
                 new AtoresFilmes {NomePersonagem="Iron Man", AtorFK=3, FilmeFK=1},
-                new AtoresFilmes {NomePersonagem="Captan America", AtorFK=1, FilmeFK=2},
+                new AtoresFilmes {NomePersonagem="Captain America", AtorFK=1, FilmeFK=2},
                 new AtoresFilmes {NomePersonagem="Thor", AtorFK=2, FilmeFK=2},
                 new AtoresFilmes {NomePersonagem="Iron Man", AtorFK=3, FilmeFK=2}
 

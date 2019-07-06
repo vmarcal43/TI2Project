@@ -1,50 +1,14 @@
 ﻿@model TI2Project.Models.Atores
 
-@{
-    ViewBag.Title = "Details";
-}
+<h2>@Html.DisplayFor(model => model.Nome)</h2>
 
-<h2>Details</h2>
-
-<div>
-    <h4>Atores</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nascimento)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nacionalidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nacionalidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-
-    </dl>
-</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
 </p>
+
+<div style="float:left">
+    <img src="~/Images/Actors/@Html.DisplayFor(model => model.Foto)" width="260" height="370">
+    <p></p>
+    <p>@Html.ActionLink("Back to Actors", "Index")</p>
+</div>

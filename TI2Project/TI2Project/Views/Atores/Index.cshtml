@@ -2,14 +2,15 @@
 
 <h2>Actors</h2>
 
-<p>@Html.ActionLink("Add New Actor", "Create")</p>
+<p>@Html.ActionLink("Add Actor", "Create")</p>
 
 @foreach (var item in Model)
 {
     <div style="float:left; border-style:solid; border-color:black">
         <a href="/Atores/Details/@item.ID">
-            <img src="~/Images/Actors/@item.Foto" width="182" height="268">
+            <img src="~/Images/Actors/@item.Foto" width="180" height="270">
         </a>
         <p style="text-align:center">@item.Nome</p>
     </div>
+    <div style="float:left; border-style:solid; border-color:white; border-width:thin"></div>
 }
