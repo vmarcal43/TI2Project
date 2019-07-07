@@ -1,51 +1,16 @@
 ﻿@model IEnumerable<TI2Project.Models.Atores>
 
-@{
-    ViewBag.Title = "Index";
+<h2>Actors</h2>
+
+<p>@Html.ActionLink("Add Actor", "Create")</p>
+
+@foreach (var item in Model)
+{
+    <div style="float:left; border-style:solid; border-color:black">
+        <a href="/Atores/Details/@item.ID">
+            <img src="~/Images/Actors/@item.Foto" width="180" height="270">
+        </a>
+        <p style="text-align:center">@item.Nome</p>
+    </div>
+    <div style="float:left; border-style:solid; border-color:white; border-width:thin"></div>
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nacionalidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nascimento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nacionalidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>

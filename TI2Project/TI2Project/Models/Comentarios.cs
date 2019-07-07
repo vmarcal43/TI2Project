@@ -16,6 +16,6 @@ namespace TI2Project.Models{
 
         [ForeignKey("Filme")]
         public int FilmeFK { get; set; }
-        public Filmes Filme { get; set; }
+        public virtual Filmes Filme { get; set; }
     }
 }

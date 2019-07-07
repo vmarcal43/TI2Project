@@ -1,39 +1,16 @@
 ﻿@model IEnumerable<TI2Project.Models.Estudios>
 
-@{
-    ViewBag.Title = "Index";
+<h2>Studios</h2>
+
+<p>@Html.ActionLink("Add Studio", "Create")</p>
+
+@foreach (var item in Model)
+{
+    <div style="float:left; border-style:solid; border-color:black">
+        <a href="/Estudios/Details/@item.ID">
+            <img src="~/Images/Studios/@item.Imagem" width="180" height="270">
+        </a>
+        <p style="text-align:center">@item.Nome</p>
+    </div>
+    <div style="float:left; border-style:solid; border-color:white; border-width:thin"></div>
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>

@@ -2,31 +2,63 @@
 
 <h2>@Html.DisplayFor(model => model.Titulo)</h2>
 
-    <img src="~/Images/@Html.DisplayFor(model => model.Imagem)" width="282" height="368">
-    <div style="position: relative; left: 300px; top: -368px">
-        @*<p>@Html.DisplayFor(model => model.Trailer)</p>*@
-        <p>Duration: @Html.DisplayFor(model => model.Duracao) mins</p>
-        <p>Genre: @Html.DisplayFor(model => model.Genero)</p>
-        <p>Year: @Html.DisplayFor(model => model.Lancamento)</p>
-        <p>
-            Studio:
-            <img src="~/Images/@Html.DisplayFor(model => model.Estudio.Imagem)" width="10" height="10">
-            @Html.DisplayFor(model => Model.Estudio.Nome)
-        </p>
-        <br />
-        <p>Personagens:</p>
-        @foreach (var item in Model.ListaDePersonagens)
-        {
-            <p>
-            <a href="/Episodios/Details/@item.Ator">
-                <img src="~/Images/@Html.DisplayFor(model => item.Ator.Foto)" width="66" height="100">
-            </a>
-            @Html.DisplayFor(model => item.Ator.Nome)
-            </p>
-        }
-    </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
 </p>
+
+<div style="float:left">
+    <img src="~/Images/Films/@Html.DisplayFor(model => model.Imagem)" width="260" height="370">
+    <p></p>
+    <p>@Html.ActionLink("Back to Films", "Index")</p>
+</div>
+
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Duration:</b> @Html.DisplayFor(model => model.Duracao) mins</p>
+    <p><b>Genre:</b> @Html.DisplayFor(model => model.Genero)</p>
+    <p><b>Year:</b> @Html.DisplayFor(model => model.Lancamento)</p>
+    <p>
+        <b>Studio:</b>
+        <a href="/Estudios/Details/@Html.DisplayFor(model => model.Estudio.ID)">
+            <img src="~/Images/Studios/@Html.DisplayFor(model => model.Estudio.Imagem)" width="50" height="75">
+            </a>
+            @Html.DisplayFor(model => model.Estudio.Nome)
+    </p>
+    <p><b>Trailer:</b></p>
+    <iframe width="250" height="150" src="https://www.youtube.com/embed/@Html.DisplayFor(model => model.Trailer)" allowfullscreen></iframe>
+</div>
+
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Characters:</b></p>
+    @Html.ActionLink("Add Character", "Create", "AtoresFilmes")
+    @foreach (var item in Model.ListaDePersonagens)
+    {
+    <p>
+        <a href="/Atores/Details/@item.Ator.ID">
+            <img src="~/Images/Actors/@Html.DisplayFor(modelItem => item.Ator.Foto)" width="50" height="75">
+            </a>
+            @Html.DisplayFor(modelItem => item.Ator.Nome) as 
+            @Html.DisplayFor(modelItem => item.NomePersonagem)
+    </p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", "AtoresFilmes", new { id = item.ID }, null) |
+            @Html.ActionLink("Delete", "Delete", "AtoresFilmes", new { id = item.ID }, null)
+        </p>
+    }
+</div>
+
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Coments:</b></p>
+    @Html.ActionLink("Add Coment", "Create", "Comentarios")
+    @foreach (var item in Model.ListaDeComentarios)
+    {
+        <p>@Html.DisplayFor(modelItem => item.Conteudo) <small>@Html.DisplayFor(modelItem => item.Data)</small></p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", "Comentarios", new { id = item.ID }, null) |
+            @Html.ActionLink("Delete", "Delete", "Comentarios", new { id = item.ID }, null)
+        </p>
+    }
+</div>

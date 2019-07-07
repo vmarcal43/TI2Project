@@ -14,10 +14,10 @@ namespace TI2Project.Models{
 
         [ForeignKey("Ator")]
         public int AtorFK { get; set; }
-        public Atores Ator { get; set; }
+        public virtual Atores Ator { get; set; }
 
         [ForeignKey("Filme")]
         public int FilmeFK { get; set; }
-        public Filmes Filme { get; set; }
+        public virtual Filmes Filme { get; set; }
     }
 }
