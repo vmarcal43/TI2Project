@@ -17,8 +17,8 @@ namespace TI2Project.Controllers
         // GET: AtoresFilmes
         public ActionResult Index()
         {
-            var atoresFilmes = db.AtoresFilmes.Include(a => a.Ator).Include(a => a.Filme);
-            return View(atoresFilmes.ToList());
+            var atorFilme = db.AtoresFilmes.Include(a => a.Ator).Include(a => a.Filme);
+            return View(atorFilme.ToList());
         }
 
         // GET: AtoresFilmes/Details/5
@@ -26,14 +26,14 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            AtoresFilmes atoresFilmes = db.AtoresFilmes.Find(id);
-            if (atoresFilmes == null)
+            AtoresFilmes atorFilme = db.AtoresFilmes.Find(id);
+            if (atorFilme == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
-            return View(atoresFilmes);
+            return View(atorFilme);
         }
 
         // GET: AtoresFilmes/Create
@@ -68,12 +68,12 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             AtoresFilmes atoresFilmes = db.AtoresFilmes.Find(id);
             if (atoresFilmes == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.AtorFK = new SelectList(db.Atores, "ID", "Nome", atoresFilmes.AtorFK);
             ViewBag.FilmeFK = new SelectList(db.Filmes, "ID", "Titulo", atoresFilmes.FilmeFK);
@@ -103,12 +103,12 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             AtoresFilmes atoresFilmes = db.AtoresFilmes.Find(id);
             if (atoresFilmes == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(atoresFilmes);
         }

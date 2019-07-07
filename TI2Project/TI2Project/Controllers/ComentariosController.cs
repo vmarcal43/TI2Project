@@ -17,8 +17,8 @@ namespace TI2Project.Controllers
         // GET: Comentarios
         public ActionResult Index()
         {
-            var comentarios = db.Comentarios.Include(c => c.Filme);
-            return View(comentarios.ToList());
+            var comentario = db.Comentarios.Include(c => c.Filme);
+            return View(comentario.ToList());
         }
 
         // GET: Comentarios/Details/5
@@ -26,12 +26,12 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(comentarios);
         }
@@ -66,12 +66,12 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.FilmeFK = new SelectList(db.Filmes, "ID", "Titulo", comentarios.FilmeFK);
             return View(comentarios);
@@ -99,12 +99,12 @@ namespace TI2Project.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Comentarios comentarios = db.Comentarios.Find(id);
             if (comentarios == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(comentarios);
         }

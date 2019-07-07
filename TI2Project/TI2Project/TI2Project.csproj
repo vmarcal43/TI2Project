@@ -209,8 +209,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\FIlms\Avengers1.jpg" />
-    <Content Include="Images\FIlms\Avengers2.jpg" />
+    <Content Include="Images\Films\Avengers1.jpg" />
+    <Content Include="Images\Films\Avengers2.jpg" />
     <Content Include="Images\Actors\ChrisEvans.jfif" />
     <Content Include="Images\Actors\ChrisHemsworth.jfif" />
     <Content Include="Images\Studios\marvel.png" />
