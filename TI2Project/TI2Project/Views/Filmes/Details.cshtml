@@ -48,8 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Ator.Nome) as
                 @Html.DisplayFor(modelItem => item.NomePersonagem)
             </p>
-
-            @if (User.IsInRole("Admin"))
+            if (User.IsInRole("Admin"))
             {
                 <p>
                     @Html.ActionLink("Edit", "Edit", "AtoresFilmes", new { id = item.ID }, null) |
@@ -62,13 +61,19 @@
     <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
     <div style="float:left">
         <p><b>Coments:</b></p>
+        @if (User.Identity.IsAuthenticated)
+        {
         @Html.ActionLink("Add Coment", "Create", "Comentarios")
+        }
         @foreach (var item in Model.ListaDeComentarios)
         {
             <p>@Html.DisplayFor(modelItem => item.Conteudo) <small>@Html.DisplayFor(modelItem => item.Data)</small></p>
+            if (User.IsInRole("Admin"))
+            {
             <p>
-                @Html.ActionLink("Edit", "Edit", "Comentarios", new { id = item.ID }, null) |
+                @*@Html.ActionLink("Edit", "Edit", "Comentarios", new { id = item.ID }, null) |*@
                 @Html.ActionLink("Delete", "Delete", "Comentarios", new { id = item.ID }, null)
             </p>
+            }
         }
     </div>
