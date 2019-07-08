@@ -48,8 +48,10 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
+        public ActionResult Create([Bind(Include = "ID,Conteudo,FilmeFK")] Comentarios comentarios)
         {
+            comentarios.Data = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Comentarios.Add(comentarios);
@@ -82,8 +84,10 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Conteudo,Data,FilmeFK")] Comentarios comentarios)
+        public ActionResult Edit([Bind(Include = "ID,Conteudo,FilmeFK")] Comentarios comentarios)
         {
+            comentarios.Data = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(comentarios).State = EntityState.Modified;

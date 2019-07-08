@@ -18,7 +18,7 @@ namespace TI2Project.Models{
 
         public string Nome { get; set; }
 
-        public DateTime? Nascimento { get; set; }
+        public string Nascimento { get; set; }
 
         public string Nacionalidade { get; set; }
 
