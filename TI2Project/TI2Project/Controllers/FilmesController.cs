@@ -145,7 +145,7 @@ namespace TI2Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Titulo,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filme, HttpPostedFileBase foto)
+        public ActionResult Edit([Bind(Include = "ID,Titulo,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filme, HttpPostedFileBase foto)
         {
             // vars auxiliares
             string caminho = "";
