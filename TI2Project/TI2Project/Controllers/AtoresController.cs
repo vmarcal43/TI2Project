@@ -199,7 +199,7 @@ namespace TI2Project.Controllers
             {
                 try
                 {
-                    db.Atores.Add(ator);
+                    db.Entry(ator).State = EntityState.Modified;
                     db.SaveChanges();
 
                     /// 5º como o guardar no disco rígido? e onde?
