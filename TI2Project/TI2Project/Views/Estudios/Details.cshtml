@@ -2,10 +2,13 @@
 
 <h2>@Html.DisplayFor(model => model.Nome)</h2>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+    </p>
+}
 
 <div style="float:left">
     <img src="~/Images/Studios/@Html.DisplayFor(model => model.Imagem)" width="260" height="370">

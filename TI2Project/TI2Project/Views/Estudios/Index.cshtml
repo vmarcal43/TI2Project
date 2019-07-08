@@ -2,7 +2,10 @@
 
 <h2>Studios</h2>
 
-<p>@Html.ActionLink("Add Studio", "Create")</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>@Html.ActionLink("Add Studio", "Create")</p>
+}
 
 @foreach (var item in Model)
 {

@@ -2,14 +2,18 @@
 
 <h2>Films</h2>
 
-<p>@Html.ActionLink("Add Film", "Create")</p>
-
-@foreach (var item in Model){
-<div style="float:left; border-style:solid; border-color:black">
-    <a href="/Filmes/Details/@item.ID">
-        <img src="~/Images/Films/@item.Imagem" width="180" height="270">
-        </a>
-        <p style="text-align:center">@item.Titulo</p>
-</div>
-    <div style="float:left; border-style:solid; border-color:white; border-width:thin"></div>
+@if (User.IsInRole("Admin"))
+{
+    <p>@Html.ActionLink("Add Film", "Create")</p>
 }
+
+    @foreach (var item in Model)
+    {
+        <div style="float:left; border-style:solid; border-color:black">
+            <a href="/Filmes/Details/@item.ID">
+                <img src="~/Images/Films/@item.Imagem" width="180" height="270">
+            </a>
+            <p style="text-align:center">@item.Titulo</p>
+        </div>
+        <div style="float:left; border-style:solid; border-color:white; border-width:thin"></div>
+    }

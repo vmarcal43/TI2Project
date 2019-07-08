@@ -209,13 +209,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Actors\no_image.png" />
     <Content Include="Images\Films\Avengers1.jpg" />
     <Content Include="Images\Films\Avengers2.jpg" />
     <Content Include="Images\Actors\ChrisEvans.jfif" />
     <Content Include="Images\Actors\ChrisHemsworth.jfif" />
+    <Content Include="Images\Films\no_image.png" />
     <Content Include="Images\Studios\marvel.png" />
     <Content Include="Images\Profile\DSCF3287.JPG" />
     <Content Include="Images\Actors\RobertDowneyJR.jfif" />
+    <Content Include="Images\Studios\no_image.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
