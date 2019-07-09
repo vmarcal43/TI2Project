@@ -2,6 +2,7 @@
 
 <h2>@Html.DisplayFor(model => model.Nome)</h2>
 
+@*impede que utilizadores que não sejam administradores editem ou apaguem estúdios*@
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -13,19 +14,21 @@
 <div style="float:left">
     <img src="~/Images/Studios/@Html.DisplayFor(model => model.Imagem)" width="260" height="370">
     <p></p>
-    <p>@Html.ActionLink("Back to Actors", "Index")</p>
+    <p>@Html.ActionLink("Back to Studios", "Index")</p> @*botão para regressar ao index dos estúdios*@
 </div>
 
 <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
 <div style="float:left">
     <p><b>Films:</b></p>
+    @*cria um parágrafo com a imagem e titulo de cada filme produzido pelo estúdio*@
     @foreach (var item in Model.ListaDeFilmes)
     {
-        <p>
-            <a href="/Filmes/Details/@item.ID">
-                <img src="~/Images/Films/@Html.DisplayFor(modelItem => item.Imagem)" width="50" height="75">
-            </a>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </p>
+    <p>
+        @*redireciona o utilizador para a view Details do filme escolhido*@
+        <a href="/Filmes/Details/@item.ID">
+            <img src="~/Images/Films/@Html.DisplayFor(modelItem => item.Imagem)" width="50" height="75">
+        </a>
+        @Html.DisplayFor(modelItem => item.Titulo)
+    </p>
     }
 </div>

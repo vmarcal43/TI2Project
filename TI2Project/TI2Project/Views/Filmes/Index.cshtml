@@ -2,7 +2,7 @@
 
 <h2>Films</h2>
 
-@*permite que apenas os administradores possam criar um filme*@
+@*impede que utilizadores que não sejam administradores criem filmes*@
 @if (User.IsInRole("Admin"))
 {
     <p>@Html.ActionLink("Add Film", "Create")</p>
@@ -11,6 +11,7 @@
 @foreach (var item in Model)
 {
     <div style="float:left; border-style:solid; border-color:black">
+        @*redireciona o utilizador para a view Details do filme escolhido*@
         <a href="/Filmes/Details/@item.ID">
             <img src="~/Images/Films/@item.Imagem" width="180" height="270">
         </a>
