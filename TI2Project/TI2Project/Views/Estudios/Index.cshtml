@@ -2,6 +2,7 @@
 
 <h2>Studios</h2>
 
+@*permite que apenas os administradores possam criar um estúdio*@
 @if (User.IsInRole("Admin"))
 {
     <p>@Html.ActionLink("Add Studio", "Create")</p>

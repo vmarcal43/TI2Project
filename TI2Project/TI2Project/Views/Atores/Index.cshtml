@@ -2,6 +2,7 @@
 
 <h2>Actors</h2>
 
+@*permite que apenas os administradores possam criar um ator*@
 @if (User.IsInRole("Admin"))
 {
     <p>@Html.ActionLink("Add Actor", "Create")</p>

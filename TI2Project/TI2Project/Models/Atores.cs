@@ -9,11 +9,10 @@ namespace TI2Project.Models{
 
         public Atores()
         {
-
             ListaDePersonagens = new HashSet<AtoresFilmes>();
-            
         }
 
+        //atributos de cada ator: id, nome, data de nascimento, nacionalidade e fotografia
         public int ID { get; set; }
 
         public string Nome { get; set; }
@@ -24,6 +23,6 @@ namespace TI2Project.Models{
 
         public string Foto { get; set; }
 
-        public virtual ICollection<AtoresFilmes> ListaDePersonagens { get; set; }
+        public virtual ICollection<AtoresFilmes> ListaDePersonagens { get; set; } //personagens interpretadas pelo ator
     }
 }

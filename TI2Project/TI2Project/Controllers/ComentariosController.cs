@@ -50,6 +50,7 @@ namespace TI2Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Conteudo,FilmeFK")] Comentarios comentarios)
         {
+            //atribui a cada comentário, a data em que o mesmo foi criado
             comentarios.Data = DateTime.Now;
 
             if (ModelState.IsValid)
@@ -86,6 +87,7 @@ namespace TI2Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Conteudo,FilmeFK")] Comentarios comentarios)
         {
+            //atribui a cada comentário, a data em que o mesmo foi editado
             comentarios.Data = DateTime.Now;
 
             if (ModelState.IsValid)
