@@ -50,57 +50,37 @@ namespace TI2Project.Controllers
         public ActionResult Create([Bind(Include = "Nome")] Estudios estudio, HttpPostedFileBase foto)
         {
 
-
-            // vars auxiliares
             string caminho = "";
             bool ficheiroValido = false;
 
-
-            /// 1º será que foi enviado um ficheiro?
             if (foto == null)
             {
-                // atribuir uma foto por defeito ao Agente
                 estudio.Imagem = "no_image.png";
             }
-
             else
             {
-                /// 2º será que o ficheiro, se foi fornecido, é do tipo correto?
                 string mimeType = foto.ContentType;
+
                 if (mimeType == "image/jpeg" || mimeType == "image/png")
                 {
-                    // o ficheiro é do tipo correto
-
-                    /// 3º qual o nome a atribuir ao ficheiro?
                     Guid g;
-                    g = Guid.NewGuid(); // obtem os dados para o nome do ficheiro
-                                        // e qual a extensão do ficheiro?
+                    g = Guid.NewGuid();
+
                     string extensao = Path.GetExtension(foto.FileName).ToLower();
-                    // montar o novo nome
+
                     string nomeFicheiro = g.ToString() + extensao;
-                    // onde guardar o ficheiro?
+
                     caminho = Path.Combine(Server.MapPath("~/Images/Studios/"), nomeFicheiro);
 
-                    /// 4º como o associar ao novo Agente?
                     estudio.Imagem = nomeFicheiro;
 
-                    // marcar o ficheiro como válido
                     ficheiroValido = true;
                 }
-
                 else
                 {
-                    // o ficheiro fornecido não é válido
-                    // atribuo a imagem por defeito ao Agente
                     estudio.Imagem = "no_image.png";
                 }
-
-
             }
-
-
-
-
 
             if (ModelState.IsValid)
             {
@@ -110,7 +90,6 @@ namespace TI2Project.Controllers
                     db.Estudios.Add(estudio);
                     db.SaveChanges();
 
-                    /// 5º como o guardar no disco rígido? e onde?
                     if (ficheiroValido) foto.SaveAs(caminho);
 
                     return RedirectToAction("Index");
@@ -150,56 +129,38 @@ namespace TI2Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Nome")] Estudios estudio, HttpPostedFileBase foto)
         {
-            // vars auxiliares
+
             string caminho = "";
             bool ficheiroValido = false;
 
-
-            /// 1º será que foi enviado um ficheiro?
             if (foto == null)
             {
-                // atribuir uma foto por defeito ao Agente
                 estudio.Imagem = "no_image.png";
             }
-
             else
             {
-                /// 2º será que o ficheiro, se foi fornecido, é do tipo correto?
                 string mimeType = foto.ContentType;
+
                 if (mimeType == "image/jpeg" || mimeType == "image/png")
                 {
-                    // o ficheiro é do tipo correto
-
-                    /// 3º qual o nome a atribuir ao ficheiro?
                     Guid g;
-                    g = Guid.NewGuid(); // obtem os dados para o nome do ficheiro
-                                        // e qual a extensão do ficheiro?
+                    g = Guid.NewGuid();
+
                     string extensao = Path.GetExtension(foto.FileName).ToLower();
-                    // montar o novo nome
+
                     string nomeFicheiro = g.ToString() + extensao;
-                    // onde guardar o ficheiro?
+
                     caminho = Path.Combine(Server.MapPath("~/Images/Studios/"), nomeFicheiro);
 
-                    /// 4º como o associar ao novo Agente?
                     estudio.Imagem = nomeFicheiro;
 
-                    // marcar o ficheiro como válido
                     ficheiroValido = true;
                 }
-
                 else
                 {
-                    // o ficheiro fornecido não é válido
-                    // atribuo a imagem por defeito ao Agente
                     estudio.Imagem = "no_image.png";
                 }
-
-
             }
-
-
-
-
 
             if (ModelState.IsValid)
             {
@@ -209,7 +170,6 @@ namespace TI2Project.Controllers
                     db.Entry(estudio).State = EntityState.Modified;
                     db.SaveChanges();
 
-                    /// 5º como o guardar no disco rígido? e onde?
                     if (ficheiroValido) foto.SaveAs(caminho);
 
                     return RedirectToAction("Index");

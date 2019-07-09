@@ -12,7 +12,7 @@ namespace TI2Project.Models{
         //atributos de cada personagem: id e nome
         public int ID { get; set; }
 
-        [Display(Name = "Nome da Personagem")]
+        [Display(Name = "Character")]
         public string NomePersonagem { get; set; }
 
         //chave forasteira do ator que interpreta a personagem

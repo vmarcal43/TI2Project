@@ -18,23 +18,25 @@ namespace TI2Project.Models{
         //atributos de cada filme: id, titulo, imagem, trailer, ano de lançamento, género e duração (em minutos)
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Escreva o nome do filme.")]
+        [Required(ErrorMessage = "Write the movie's name.")]
+        [Display(Name = "Title")]
         public string Titulo { get; set; }
 
-        [Required(ErrorMessage = "Escolha uma imagem.")]
+        [Required(ErrorMessage = "Insert an image.")]
+        [Display(Name = "Image")]
         public string Imagem { get; set; }
 
         public string Trailer { get; set; } //id correspondente ao video no youtube
 
-        [Display(Name = "Ano de Lançamento")]
-        [Required(ErrorMessage = "Em que ano foi lançado o filme?")]
+        [Display(Name = "Release Year")]
+        [Required(ErrorMessage = "Release year is needed.")]
         public int Lancamento { get; set; }
 
-        [Display(Name = "Género")]
+        [Display(Name = "Genre")]
         public string Genero { get; set; }
 
-        [Required(ErrorMessage = "Quantos minutos dura o filme?")]
-        [Display(Name = "Duração (em mins)")]
+        [Required(ErrorMessage = "Movie length is needed.")]
+        [Display(Name = "Duration (in mins)")]
         public int Duracao { get; set; }
 
         //chave forasteira do estúdio que produziu o filme

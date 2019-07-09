@@ -12,8 +12,8 @@ namespace TI2Project.Models{
         //atributos de cada comentario, id, conteúdo e data
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Escreva alguma coisa.")]
-        [Display(Name = "Comentário")]
+        [Required(ErrorMessage = "Write something.")]
+        [Display(Name = "Comment")]
         public string Conteudo { get; set; }
 
         public DateTime? Data { get; set; } //momento em que o comentário foi criado ou editado pela última vez, guardado automaticamente

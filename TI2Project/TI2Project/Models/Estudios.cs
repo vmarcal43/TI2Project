@@ -15,10 +15,12 @@ namespace TI2Project.Models{
         //atributos de cada estúdio: id, nome e imagem
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Escreva o nome do estúdio.")]
+        [Required(ErrorMessage = "Write studio's name.")]
+        [Display(Name = "Name")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Insira uma imagem.")]
+        [Required(ErrorMessage = "Insert an Image.")]
+        [Display(Name = "Image")]
         public string Imagem { get; set; }
 
         public virtual ICollection<Filmes> ListaDeFilmes { get; set; } //filmes produzidos pelo estúdio
