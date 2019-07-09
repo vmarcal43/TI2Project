@@ -30,9 +30,9 @@ namespace TI2Project.Migrations
             var filmes = new List<Filmes>
             {
                 new Filmes {Titulo="Avengers: Age of Ultron", Duracao=141, Lancamento=2015,Imagem="Avengers1.jpg", Trailer="tmeOjFno6Do",Genero="Action", EstudioFK=1},
-                new Filmes {Titulo="Avengers: Endgame", Duracao=181, Lancamento=2019,Imagem="Avengers2.jpg", Trailer="hA6hldpSTF8",Genero="Action", EstudioFK=1, },
+                new Filmes {Titulo="Avengers: Endgame", Duracao=151, Lancamento=2019,Imagem="Avengers2.jpg", Trailer="hA6hldpSTF8",Genero="Action", EstudioFK=1, },
                 new Filmes {Titulo="Spider Man: Far from Home", Duracao=131, Lancamento=2019,Imagem="spiderMan.jfif", Trailer="DYYtuKyMtY8",Genero="Action", EstudioFK=1, },
-                new Filmes {Titulo="Thor: Ragnarok", Duracao=181, Lancamento=2019,Imagem="thorRagnarok.jpg", Trailer="ue80QwXMRHg",Genero="Action", EstudioFK=1, },
+                new Filmes {Titulo="Thor: Ragnarok", Duracao=121, Lancamento=2019,Imagem="thorRagnarok.jpg", Trailer="ue80QwXMRHg",Genero="Action", EstudioFK=1, },
                 new Filmes {Titulo="Captain Marvel", Duracao=181, Lancamento=2019,Imagem="captainMarvel.jpg", Trailer="Z1BCujX3pw8",Genero="Action", EstudioFK=1, }
 
 
