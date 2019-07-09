@@ -51,26 +51,23 @@ namespace TI2Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Titulo,Trailer,Lancamento,Genero,Duracao,EstudioFK")] Filmes filme, HttpPostedFileBase foto)
         {
-            // vars auxiliares
+            //variáveis auxiliares
             string caminho = "";
             bool ficheiroValido = false;
 
-
-            /// 1º será que foi enviado um ficheiro?
+            //verifica se foi escolhida alguma imagem
             if (foto == null)
             {
-                // atribuir uma foto por defeito ao Agente
+                //atribui uma imagem em branco por defeito
                 filme.Imagem = "no_image.png";
             }
-
             else
             {
-                /// 2º será que o ficheiro, se foi fornecido, é do tipo correto?
-                string mimeType = foto.ContentType;
+                string mimeType = foto.ContentType; //guardar o caminho
+
+                //verifica se o ficheiro
                 if (mimeType == "image/jpeg" || mimeType == "image/png")
                 {
-                    // o ficheiro é do tipo correto
-
                     /// 3º qual o nome a atribuir ao ficheiro?
                     Guid g;
                     g = Guid.NewGuid(); // obtem os dados para o nome do ficheiro
@@ -87,19 +84,13 @@ namespace TI2Project.Controllers
                     // marcar o ficheiro como válido
                     ficheiroValido = true;
                 }
-
                 else
                 {
                     // o ficheiro fornecido não é válido
                     // atribuo a imagem por defeito ao Agente
                     filme.Imagem = "no_image.png";
                 }
-
-
             }
-
-
-
             if (ModelState.IsValid)
             {
                 try
@@ -107,7 +98,7 @@ namespace TI2Project.Controllers
                     db.Filmes.Add(filme);
                     db.SaveChanges();
 
-                    /// 5º como o guardar no disco rígido? e onde?
+                    //se 
                     if (ficheiroValido) foto.SaveAs(caminho);
 
                     return RedirectToAction("Index");
