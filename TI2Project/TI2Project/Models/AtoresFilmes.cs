@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace TI2Project.Models{
         //atributos de cada personagem: id e nome
         public int ID { get; set; }
 
+        [Display(Name = "Nome da Personagem")]
         public string NomePersonagem { get; set; }
 
         //chave forasteira do ator que interpreta a personagem

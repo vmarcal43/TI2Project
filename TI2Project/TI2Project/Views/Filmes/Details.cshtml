@@ -2,6 +2,7 @@
 
 <h2>@Html.DisplayFor(model => model.Titulo)</h2>
 
+@*impede que utilizadores que não sejam administradores editem ou apaguem filmes*@
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -10,70 +11,80 @@
     </p>
 }
 
-    <div style="float:left">
-        <img src="~/Images/Films/@Html.DisplayFor(model => model.Imagem)" width="260" height="370">
-        <p></p>
-        <p>@Html.ActionLink("Back to Films", "Index")</p>
-    </div>
+<div style="float:left">
+    <img src="~/Images/Films/@Html.DisplayFor(model => model.Imagem)" width="260" height="370">
+    <p></p>
+    <p>@Html.ActionLink("Back to Films", "Index")</p> @*botão para regressar ao index dos filmes*@
+</div>
 
-    <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
-    <div style="float:left">
-        <p><b>Duration:</b> @Html.DisplayFor(model => model.Duracao) mins</p>
-        <p><b>Genre:</b> @Html.DisplayFor(model => model.Genero)</p>
-        <p><b>Year:</b> @Html.DisplayFor(model => model.Lancamento)</p>
-        <p>
-            <b>Studio:</b>
-            <a href="/Estudios/Details/@Html.DisplayFor(model => model.Estudio.ID)">
-                <img src="~/Images/Studios/@Html.DisplayFor(model => model.Estudio.Imagem)" width="50" height="75">
-            </a>
-            @Html.DisplayFor(model => model.Estudio.Nome)
-        </p>
-        <p><b>Trailer:</b></p>
-        <iframe width="250" height="150" src="https://www.youtube.com/embed/@Html.DisplayFor(model => model.Trailer)" allowfullscreen></iframe>
-    </div>
+@*div com os atributos do filme*@
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Duration:</b> @Html.DisplayFor(model => model.Duracao) mins</p>
+    <p><b>Genre:</b> @Html.DisplayFor(model => model.Genero)</p>
+    <p><b>Year:</b> @Html.DisplayFor(model => model.Lancamento)</p>
+    <p>
+        <b>Studio:</b>
+        @*redireciona o utilizador para a view Details do estúdio que produziu o filme*@
+        <a href="/Estudios/Details/@Html.DisplayFor(model => model.Estudio.ID)">
+            <img src="~/Images/Studios/@Html.DisplayFor(model => model.Estudio.Imagem)" width="50" height="75">
+        </a>
+        @Html.DisplayFor(model => model.Estudio.Nome)
+    </p>
+    <p><b>Trailer:</b></p>
+    @*cria uma janela onde se pode ver o video do link corresponde ao trailer do filme*@
+    <iframe width="250" height="150" src="https://www.youtube.com/embed/@Html.DisplayFor(model => model.Trailer)" allowfullscreen></iframe>
+</div>
 
-    <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
-    <div style="float:left">
-        <p><b>Characters:</b></p>
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Add Character", "Create", "AtoresFilmes")
-        }
-        @foreach (var item in Model.ListaDePersonagens)
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Characters:</b></p>
+    @*impede que utilizadores que não sejam administradores criem personagens*@
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Add Character", "Create", "AtoresFilmes")
+    }
+    @*cria um parágrafo com a imagem e titulo de cada ator que participa no filme, e a personagem que interpreta*@
+    @foreach (var item in Model.ListaDePersonagens)
+    {
+    <p>
+        @*redireciona o utilizador para a view Details do do ator escolhido*@
+        <a href="/Atores/Details/@item.Ator.ID">
+            <img src="~/Images/Actors/@Html.DisplayFor(modelItem => item.Ator.Foto)" width="50" height="75">
+        </a>
+        @Html.DisplayFor(modelItem => item.Ator.Nome) as
+        @Html.DisplayFor(modelItem => item.NomePersonagem)
+    </p>
+        @*impede que utilizadores que não sejam administradores editem ou apaguem personagens*@
+        if (User.IsInRole("Admin"))
         {
             <p>
-                <a href="/Atores/Details/@item.Ator.ID">
-                    <img src="~/Images/Actors/@Html.DisplayFor(modelItem => item.Ator.Foto)" width="50" height="75">
-                </a>
-                @Html.DisplayFor(modelItem => item.Ator.Nome) as
-                @Html.DisplayFor(modelItem => item.NomePersonagem)
+                @Html.ActionLink("Edit", "Edit", "AtoresFilmes", new { id = item.ID }, null) |
+                @Html.ActionLink("Delete", "Delete", "AtoresFilmes", new { id = item.ID }, null)
             </p>
-            if (User.IsInRole("Admin"))
-            {
-                <p>
-                    @Html.ActionLink("Edit", "Edit", "AtoresFilmes", new { id = item.ID }, null) |
-                    @Html.ActionLink("Delete", "Delete", "AtoresFilmes", new { id = item.ID }, null)
-                </p>
-            }
         }
-        </div>
+    }
+</div>
 
-    <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
-    <div style="float:left">
-        <p><b>Coments:</b></p>
-        @if (User.Identity.IsAuthenticated)
-        {
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Coments:</b></p>
+    @*impede que utilizadores anónimos criem comentários*@
+    @if (User.Identity.IsAuthenticated)
+    {
         @Html.ActionLink("Add Coment", "Create", "Comentarios")
-        }
-        @foreach (var item in Model.ListaDeComentarios)
+    }
+    @*mostra todos os comentários correspondetne ao filme atual*@
+    @foreach (var item in Model.ListaDeComentarios)
+    {
+        <p>@Html.DisplayFor(modelItem => item.Conteudo) <small>@Html.DisplayFor(modelItem => item.Data)</small></p>
+        @*impede que utilizadores que não sejam administradores apaguem comentários*@
+        if (User.IsInRole("Admin"))
         {
-            <p>@Html.DisplayFor(modelItem => item.Conteudo) <small>@Html.DisplayFor(modelItem => item.Data)</small></p>
-            if (User.IsInRole("Admin"))
-            {
             <p>
                 @*@Html.ActionLink("Edit", "Edit", "Comentarios", new { id = item.ID }, null) |*@
                 @Html.ActionLink("Delete", "Delete", "Comentarios", new { id = item.ID }, null)
             </p>
-            }
         }
-    </div>
+    }
+</div>

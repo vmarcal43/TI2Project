@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,8 @@ namespace TI2Project.Models{
         //atributos de cada comentario, id, conteúdo e data
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Escreva alguma coisa.")]
+        [Display(Name = "Comentário")]
         public string Conteudo { get; set; }
 
         public DateTime? Data { get; set; } //momento em que o comentário foi criado ou editado pela última vez, guardado automaticamente

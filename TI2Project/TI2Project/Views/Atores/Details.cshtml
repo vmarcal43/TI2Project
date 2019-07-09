@@ -2,6 +2,7 @@
 
 <h2>@Html.DisplayFor(model => model.Nome)</h2>
 
+@*impede que utilizadores que não sejam administradores editem ou apaguem atores*@
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -13,25 +14,28 @@
     <div style="float:left">
         <img src="~/Images/Actors/@Html.DisplayFor(model => model.Foto)" width="260" height="370">
         <p></p>
-        <p>@Html.ActionLink("Back to Actors", "Index")</p>
+        <p>@Html.ActionLink("Back to Actors", "Index")</p> @*botão para regressar ao index dos atores*@
     </div>
 
-    <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
-    <div style="float:left">
-        <p><b>Nacionality:</b> @Html.DisplayFor(model => model.Nacionalidade)</p>
-        <p><b>Born at:</b> @Html.DisplayFor(model => model.Nascimento)</p>
-    </div>
+@*div com os atributos do ator*@
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Nacionality:</b> @Html.DisplayFor(model => model.Nacionalidade)</p>
+    <p><b>Born at:</b> @Html.DisplayFor(model => model.Nascimento)</p>
+</div>
 
-    <div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
-    <div style="float:left">
-        <p><b>Films:</b></p>
-        @foreach (var item in Model.ListaDePersonagens)
-        {
-            <p>
-                <a href="/Filmes/Details/@item.Filme.ID">
-                    <img src="~/Images/Films/@Html.DisplayFor(modelItem => item.Filme.Imagem)" width="50" height="75">
-                </a>
-                @Html.DisplayFor(modelItem => item.Filme.Titulo)
-            </p>
-        }
-    </div>
+<div style="float:left; border-style:solid; border-color:white; border-width:thick"></div>
+<div style="float:left">
+    <p><b>Films:</b></p>
+    @*cria um parágrafo com a imagem e titulo de cada filme em que o ator participou*@
+    @foreach (var item in Model.ListaDePersonagens)
+    {
+    <p>
+        @*redireciona o utilizador para a view Details do filme escolhido*@
+        <a href="/Filmes/Details/@item.Filme.ID">
+            <img src="~/Images/Films/@Html.DisplayFor(modelItem => item.Filme.Imagem)" width="50" height="75">
+        </a>
+        @Html.DisplayFor(modelItem => item.Filme.Titulo)
+    </p>
+    }
+</div>
