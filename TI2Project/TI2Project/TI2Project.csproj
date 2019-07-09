@@ -209,12 +209,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Actors\brieLarson.jpeg" />
     <Content Include="Images\Actors\no_image.png" />
+    <Content Include="Images\Actors\tomHolland.jpg" />
     <Content Include="Images\Films\Avengers1.jpg" />
     <Content Include="Images\Films\Avengers2.jpg" />
     <Content Include="Images\Actors\ChrisEvans.jfif" />
     <Content Include="Images\Actors\ChrisHemsworth.jfif" />
+    <Content Include="Images\Films\captainMarvel.jpg" />
     <Content Include="Images\Films\no_image.png" />
+    <Content Include="Images\Films\spiderMan.jfif" />
+    <Content Include="Images\Films\thorRagnarok.jpg" />
     <Content Include="Images\Profile\vasco.png" />
     <Content Include="Images\Studios\marvel.png" />
     <Content Include="Images\Profile\DSCF3287.JPG" />
