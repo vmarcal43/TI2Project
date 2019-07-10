@@ -26,7 +26,6 @@ namespace TI2Project.Models{
         [Display(Name = "Nationality")]
         public string Nacionalidade { get; set; }
 
-        [Required(ErrorMessage = "Insert an Image.")]
         [Display(Name = "Photo")]
         public string Foto { get; set; }
 

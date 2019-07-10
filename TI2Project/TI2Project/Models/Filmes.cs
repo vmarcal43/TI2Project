@@ -22,7 +22,6 @@ namespace TI2Project.Models{
         [Display(Name = "Title")]
         public string Titulo { get; set; }
 
-        [Required(ErrorMessage = "Insert an image.")]
         [Display(Name = "Image")]
         public string Imagem { get; set; }
 
